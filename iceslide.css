@@ -1,5 +1,6 @@
 /* This file contains the CSS rules for the game board */
 
+/* The following rule applies to the entire page. */
 body {
   background-color: #333333;
   font-family: Arial, Helvetica, sans-serif;
@@ -7,13 +8,46 @@ body {
 }
 
 #board {
+  /* Square board with a border */
   width: 400px;
   height: 400px;
   background-color: #333333;
   border: 1px solid black;
-  margin: auto;
+
+  /* Center board with padding above and below */
+  margin: 20px auto;
+
+  /* Flex container with gap between cells */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1px;
+
+  /* Animated glow effect with a light gray */
+  box-shadow: 0 0 10px 1px #999999;
+  animation: glow 1s ease-in-out infinite alternate;
 }
 
+@media screen and (max-width: 600px) {
+  #board {
+    /* Responsive board on mobile */
+    width: 100%;
+    height: auto;
+    max-width: 400px;
+    padding-bottom: 100%;
+  }
+}
+
+/* The glow animation changes the opacity of the shadow */
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px 1px #999999;
+  }
+  to {
+    box-shadow: 0 0 20px 1px #999999;
+  }
+}
+
+/* Center the directions under the board */
 #directions {
   width: 400px;
   margin: auto;
@@ -28,26 +62,36 @@ body {
   transition: 0.4s;
 }
 
-/* Directions list items are spaced apart from each other */
+/* Directions button has a dark style */
+#directions-button {
+  color: white;
+  background-color: #444;
+  border: none;
+  padding: 14px 8px;
+}
+
 #directions li {
+  /* Directions list items are spaced apart from each other */
   padding: 8px 0;
-  /* The items do not use bullets */
+  /* Don't use bullets */
   list-style-type: none;
 }
 
 #directions-content {
-  padding: 0 18px;
+  /* padding: 0 4px; */
   display: none;
   overflow: hidden;
   background-color: #444;
 }
 
-.collapsible.active, .collapsible:hover {
+.collapsible.active,
+.collapsible:hover {
   background-color: #555;
   color: white;
 }
 
-.collapsible.active:after, .collapsible:hover:after {
+.collapsible.active:after,
+.collapsible:hover:after {
   content: "\2212";
 }
 
@@ -59,16 +103,24 @@ body {
   margin-left: 5px;
 }
 
-/* The collapse animation slides the content out using keyframes when opened */
+/* Collapse animation slides the content out  when opened */
 @keyframes slideDown {
-  from {max-height: 0px;}
-  to {max-height: 400px;}
+  from {
+    max-height: 0px;
+  }
+  to {
+    max-height: 400px;
+  }
 }
 
-/* The collapse animation slides the content in using keyframes when closed */
+/* Collapse animation slides the content in when closed */
 @keyframes slideUp {
-  from {max-height: 400px;}
-  to {max-height: 0px;}
+  from {
+    max-height: 400px;
+  }
+  to {
+    max-height: 0px;
+  }
 }
 
 /* The animation slides the content out when opened */
@@ -82,7 +134,6 @@ body {
   animation-name: slideUp;
   animation-duration: 0.4s;
 }
-
 
 /* This rule applies to all cells in the game board. */
 .cell {
