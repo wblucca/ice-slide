@@ -1,0 +1,118 @@
+/* This file contains the CSS rules for the game board */
+
+body {
+  background-color: #333333;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+#board {
+  width: 400px;
+  height: 400px;
+  background-color: #333333;
+  border: 1px solid black;
+  margin: auto;
+}
+
+#directions {
+  width: 400px;
+  margin: auto;
+}
+
+#directions-button {
+  width: 100%;
+  cursor: pointer;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+/* Directions list items are spaced apart from each other */
+#directions li {
+  padding: 8px 0;
+  /* The items do not use bullets */
+  list-style-type: none;
+}
+
+#directions-content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #444;
+}
+
+.collapsible.active, .collapsible:hover {
+  background-color: #555;
+  color: white;
+}
+
+.collapsible.active:after, .collapsible:hover:after {
+  content: "\2212";
+}
+
+.collapsible:after {
+  content: "\002B";
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+/* The collapse animation slides the content out using keyframes when opened */
+@keyframes slideDown {
+  from {max-height: 0px;}
+  to {max-height: 400px;}
+}
+
+/* The collapse animation slides the content in using keyframes when closed */
+@keyframes slideUp {
+  from {max-height: 400px;}
+  to {max-height: 0px;}
+}
+
+/* The animation slides the content out when opened */
+#directions-content {
+  animation-name: slideDown;
+  animation-duration: 0.4s;
+}
+
+/* The animation slides the content in when closed */
+#directions-content.collapsed {
+  animation-name: slideUp;
+  animation-duration: 0.4s;
+}
+
+
+/* This rule applies to all cells in the game board. */
+.cell {
+  width: 40px;
+  height: 40px;
+  float: left;
+  border: 1px solid black;
+}
+
+/* This rule applies to the player cell. */
+.player {
+  background-color: #4d94ff;
+}
+
+/* This rule applies to the goal cell. */
+.goal {
+  background-color: #4dff4d;
+}
+
+/* This rule applies to the obstacle cells. */
+.obstacle {
+  background-color: black;
+}
+
+/* This rule applies to the ice cells. */
+.ice {
+  background-color: #999999;
+}
+
+/* This rule applies to the normal cells. */
+.normal {
+  background-color: #333333;
+}
