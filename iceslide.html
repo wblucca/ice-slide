@@ -8,50 +8,20 @@
     <script src="game.js"></script>
   </head>
   <body>
-    <div id="board"></div>
+    <canvas id="board"></canvas>
 
-    <!-- Write the instructions underneath the board -->
+    <!-- Directions underneath the board -->
     <div id="directions">
-      <!-- Create a collapsible panel to contain the directions. The panel should start off collapsed and rules appear in an unordered list. -->
-      <button id="directions-button" type="button" class="collapsible">
-        How to Play
-      </button>
-      <div id="directions-content">
-        <ul>
-          <li>
-            Use WASD or the arrow keys to move. Moving across ice will cause you
-            to slide until colliding with an obstacle or normal terrain.
-          </li>
-          <li>
-            When next to a block, move into it to push it. Like your character,
-            blocks slide across ice until colliding with an obstacle or normal
-            terrain
-          </li>
-          <li>Touch the green goal space to win!</li>
-        </ul>
-      </div>
+      <h2>How to Play</h2>
+      <ul>
+        <li>Use WASD or the arrow keys to move.</li>
+        <hr />
+        <li>Moving across ice will cause you to slide.</li>
+        <hr />
+        <li>Push blocks by moving into them.</li>
+        <hr />
+        <li>Touch the green goal space to win!</li>
+      </ul>
     </div>
   </body>
-
-  <!-- Script that creates collapsing behavior for the instructions -->
-  <script>
-    // Get the directions button
-    var btn = document.getElementById("directions-button");
-
-    // Add an onclick function to the button
-    btn.onclick = function () {
-      // Toggle the "active" class to change the appearance of the button
-      btn.classList.toggle("active");
-
-      // Get the content (the element after the button)
-      var content = btn.nextElementSibling;
-
-      // If the content is visible, hide it. Otherwise, show it.
-      if (content.style.display === "block") {
-        content.style.display = "none";
-      } else {
-        content.style.display = "block";
-      }
-    };
-  </script>
 </html>

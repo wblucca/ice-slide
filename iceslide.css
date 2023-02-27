@@ -1,169 +1,65 @@
-/* This file contains the CSS rules for the game board */
-
-/* The following rule applies to the entire page. */
+/* Page is dark gray with a light icy font */
 body {
   background-color: #333333;
-  font-family: Arial, Helvetica, sans-serif;
-  color: white;
+  color: #ffffff;
+  font-family: "Lucida Console", Monaco, monospace;
 }
 
+/* Board has an animated glow effect */
 #board {
-  /* Square board with a border */
-  width: 400px;
-  height: 400px;
-  background-color: #333333;
-  border: 1px solid black;
-
-  /* Center board with padding above and below */
-  margin: 20px auto;
-
-  /* Flex container with gap between cells */
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1px;
-
-  /* Animated glow effect with a light gray */
-  box-shadow: 0 0 10px 1px #999999;
+  border: 1px solid #000000;
+  box-shadow: 0 0 10px #fff;
   animation: glow 1s ease-in-out infinite alternate;
 }
 
-@media screen and (max-width: 600px) {
-  #board {
-    /* Responsive board on mobile */
-    width: 100%;
-    height: auto;
-    max-width: 400px;
-    padding-bottom: 100%;
-  }
-}
-
-/* The glow animation changes the opacity of the shadow */
+/* Glow animation */
 @keyframes glow {
   from {
-    box-shadow: 0 0 10px 1px #999999;
+    box-shadow: 0 0 10px #fff;
   }
   to {
-    box-shadow: 0 0 20px 1px #999999;
+    box-shadow: 0 0 20px #fff;
   }
 }
 
-/* Center the directions under the board */
-#directions {
-  width: 400px;
-  margin: auto;
-}
-
-#directions-button {
-  width: 100%;
-  cursor: pointer;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-  transition: 0.4s;
-}
-
-/* Directions button has a dark style */
-#directions-button {
-  color: white;
-  background-color: #444;
-  border: none;
-  padding: 14px 8px;
-}
-
-#directions li {
-  /* Directions list items are spaced apart from each other */
-  padding: 8px 0;
-  /* Don't use bullets */
-  list-style-type: none;
-}
-
-#directions-content {
-  /* padding: 0 4px; */
-  display: none;
+/* Board is centered and 600px square */
+#board {
+  display: block;
+  margin: 20px auto;
+  height: 600px;
+  width: 600px;
   overflow: hidden;
-  background-color: #444;
 }
 
-.collapsible.active,
-.collapsible:hover {
-  background-color: #555;
-  color: white;
-}
-
-.collapsible.active:after,
-.collapsible:hover:after {
-  content: "\2212";
-}
-
-.collapsible:after {
-  content: "\002B";
-  color: white;
-  font-weight: bold;
-  float: right;
-  margin-left: 5px;
-}
-
-/* Collapse animation slides the content out  when opened */
-@keyframes slideDown {
-  from {
-    max-height: 0px;
-  }
-  to {
-    max-height: 400px;
+/* Board is responsive */
+@media screen and (max-width: 620px) {
+  #board {
+    height: 90vw;
+    width: 90vw;
   }
 }
 
-/* Collapse animation slides the content in when closed */
-@keyframes slideUp {
-  from {
-    max-height: 400px;
+/* Directions are centered under the board in a rounded panel slightly lighter than the background */
+#directions {
+  background-color: #444444;
+  border-radius: 10px;
+  display: block;
+  margin: 20px auto;
+  padding: 10px;
+  text-align: center;
+  width: 600px;
+}
+
+/* Directions are responsive */
+@media screen and (max-width: 620px) {
+  #directions {
+    width: 90vw;
   }
-  to {
-    max-height: 0px;
-  }
 }
 
-/* The animation slides the content out when opened */
-#directions-content {
-  animation-name: slideDown;
-  animation-duration: 0.4s;
-}
-
-/* The animation slides the content in when closed */
-#directions-content.collapsed {
-  animation-name: slideUp;
-  animation-duration: 0.4s;
-}
-
-/* This rule applies to all cells in the game board. */
-.cell {
-  width: 40px;
-  height: 40px;
-  float: left;
-  border: 1px solid black;
-}
-
-/* This rule applies to the player cell. */
-.player {
-  background-color: #4d94ff;
-}
-
-/* This rule applies to the goal cell. */
-.goal {
-  background-color: #4dff4d;
-}
-
-/* This rule applies to the obstacle cells. */
-.obstacle {
-  background-color: black;
-}
-
-/* This rule applies to the ice cells. */
-.ice {
-  background-color: #999999;
-}
-
-/* This rule applies to the normal cells. */
-.normal {
-  background-color: #333333;
+/* List has no indentation or bullets */
+#directions ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
