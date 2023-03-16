@@ -93,6 +93,11 @@ var G = (function () {
 
             // Set the board's cells to the type
             for (let j = 0; j < count; j++) {
+                // Return if there are no more cells available
+                if (i >= cells.length) {
+                    return;
+                }
+
                 board[cells[i].y][cells[i].x] = type;
                 i++;
             }
@@ -129,6 +134,16 @@ var G = (function () {
 
             // Create objects
             for (let j = 0; j < count; j++) {
+                // Skip cells that are solid
+                while (i < cells.length && board[cells[i].y][cells[i].x].SOLID) {
+                    i++;
+                }
+
+                // Return if there are no more cells available
+                if (i >= cells.length) {
+                    return;
+                }
+
                 // Create the object
                 const object = {
                     type: type,
