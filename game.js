@@ -199,8 +199,15 @@ var G = (function () {
         let newX = x + dx;
         let newY = y + dy;
 
+        // If trying to move off the board, return false
         if (!isOnBoard(newX, newY)) {
             return false;
+        }
+
+        // If the object is trying to move into another object, slide that object first
+        const pushable = getObject(newX, newY);
+        if (pushable) {
+            slideObject(pushable, dx, dy);
         }
 
         // Slide the object until it hits a solid thing, crosses through a non-slippery
