@@ -405,6 +405,9 @@ window.addEventListener("load", G.init);
 
 // Add event listeners for player movement
 window.addEventListener("keydown", function (e) {
+    // Prevent the default action for the key
+    e.preventDefault();
+
     switch (e.key) {
         case "ArrowUp":
             G.movePlayer(0, -1);
